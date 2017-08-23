@@ -63,13 +63,13 @@ public class UserControllerTest {
     @Test
     public void putUser() throws Exception {
         request = get("/users/");
-        mvc.perform(request).andExpect(status().isOk()).andExpect(content().string(equalTo("[{\"id\":1,\"name\":\"Angus\",\"age\":18}]")));
+        mvc.perform(request).andExpect(status().isOk()).andExpect(content().string(equalTo("[]")));
     }
 
     @Test
     public void deleteUser() throws Exception {
         request = delete("/user/1");
-        mvc.perform(request).andExpect(content().string(equalTo("success")));
+        mvc.perform(request).andExpect(content().string(equalTo("")));
     }
 
 }

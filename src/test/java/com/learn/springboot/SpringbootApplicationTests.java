@@ -1,6 +1,6 @@
 package com.learn.springboot;
 
-import com.learn.springboot.controller.HelloSpringBoot;
+import com.learn.springboot.controller.HelloController;
 import com.learn.springboot.domain.Anthor;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -37,7 +35,7 @@ public class SpringbootApplicationTests {
 
 	@Before
 	public void setUp() {
-		mockMvc = MockMvcBuilders.standaloneSetup(new HelloSpringBoot()).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(new HelloController()).build();
 	}
 
 	/**
