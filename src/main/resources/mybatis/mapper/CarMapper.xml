@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的 -->
+<mapper namespace="com.learn.springboot.mapper.CarMapper">
+
+    <select id="getPicturesByTimeAndLicence" resultType="PictureVo">
+        select p.url as url, p.receive_time as receiveTime, c.licence as licence from picture p, car c where c.car_uuid = p.car_uuid and c.licence = #{0} and p.receive_time > #{1} limit 10
+    </select>
+
+</mapper>

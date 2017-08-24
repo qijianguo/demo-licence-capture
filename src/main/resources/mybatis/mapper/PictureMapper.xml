@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的 -->
+<mapper namespace="com.learn.springboot.mapper.PictureMapper">
+
+    <!--<resultMap id="com.learn.springboot." type="com.learn.springboot.domain.vo.PictureVo">-->
+        <!--<id property="id" column="id"/>-->
+        <!--<result property="id" column="stu_id"/>-->
+        <!--<result property="name" column="stu_name"/>-->
+        <!--<result property="deleteFlag" column="stu_delete_flg"/>-->
+    <!--</resultMap>-->
+    <!---->
+    <!---->
+    <!--<select id="getPicturesByTimeAndLicence" parameterMap="" >-->
+
+    <!--</select>-->
+    <!---->
+</mapper>

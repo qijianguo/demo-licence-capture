@@ -31,13 +31,11 @@ public class Result<T> {
     public Result() {
     }
 
-    public Result(int code, String message, String url, T data) {
+    public Result(int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
-
-
 
     public int getCode() {
         return code;

@@ -19,16 +19,16 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
     /** 默认错误视图 */
-//    private static final String DEFAULT_ERROR_VIEW = "error";
-//
-//    @ExceptionHandler(value = Exception.class)
-//    @ResponseBody
-//    public ErrorInfo<Object> defaultErrorHandler(HttpServletRequest req, CustomException e) throws Exception {
-//        ErrorInfo<Object> errorInfo = new ErrorInfo<>();
-//        errorInfo.setCode(ErrorInfo.ERROR);
-//        errorInfo.setMessage(e.getMessage());
-//        errorInfo.setUrl(req.getRequestURL().toString());
-//        errorInfo.setData("Some Data");
-//        return errorInfo;
-//    }
+    private static final String DEFAULT_ERROR_VIEW = "error";
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseBody
+    public ErrorInfo<Object> defaultErrorHandler(HttpServletRequest req, CustomException e) throws Exception {
+        ErrorInfo<Object> errorInfo = new ErrorInfo<>();
+        errorInfo.setCode(ErrorInfo.ERROR);
+        errorInfo.setMessage(e.getMessage());
+        errorInfo.setUrl(req.getRequestURL().toString());
+        errorInfo.setData("Some Data");
+        return errorInfo;
+    }
 }
