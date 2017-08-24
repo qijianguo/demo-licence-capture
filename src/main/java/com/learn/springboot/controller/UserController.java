@@ -36,7 +36,7 @@ public class UserController {
      */
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postUser(User user) {
-        users.put(user.getId(), user);
+
         return "success";
     }
 
@@ -49,10 +49,7 @@ public class UserController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String putUser(@PathVariable(value = "id")int id,@ModelAttribute User user) {
-        User u = users.get(id);
-        u.setName(user.getName());
-        u.setAge(user.getAge());
-        users.put(id, u);
+
         return "success";
     }
 
@@ -64,7 +61,6 @@ public class UserController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteUser(int id) {
-        users.remove(id);
         return "success";
     }
 }
