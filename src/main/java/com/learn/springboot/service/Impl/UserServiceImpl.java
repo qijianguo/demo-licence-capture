@@ -5,6 +5,7 @@ import com.learn.springboot.domain.Result;
 import com.learn.springboot.domain.User;
 import com.learn.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,6 @@ public class UserServiceImpl implements UserService {
         result.setData(Result.getMap("username", user.getUsername()));
         return result;
     }
-
 
     private JdbcTemplate jdbcTemplate;
 

@@ -2,6 +2,8 @@ package com.learn.springboot;
 
 import com.learn.springboot.controller.HelloController;
 import com.learn.springboot.domain.Anthor;
+import com.learn.springboot.domain.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -61,7 +65,30 @@ public class SpringbootApplicationTests {
 		anthor.getAnthor();
 		anthor.getEmail();
 		logger.info("作者:{}, email: {}, desc: {}, luckyNum: {}, luckyString: {}",
-				anthor.getAnthor(), anthor.getEmail(), anthor.getDesc(), anthor.getLuckyNum(), anthor.getLuckyString() );
+				anthor.getAnthor(), anthor.getEmail(), anthor.getDesc(), anthor.getLuckyNum(), anthor.getLuckyString() 		);
+	}
+
+	@Autowired
+	private StringRedisTemplate stringRedisTemplate;
+
+	@Test
+	public void testRedis() {
+		stringRedisTemplate.opsForValue().append("name","Angus");
+		Assert.assertEquals("Angus", stringRedisTemplate.opsForValue().get("name"));
+	}
+
+	@Autowired
+	private RedisTemplate<String, User> redisTemplate;
+
+	@Test
+	/**
+	 * 测试redis存储bean
+	 * redis存储对象的话要自己实现RedisSerializer<T>接口来对传入对象进行序列化和反序列化
+	 */
+	public void testRedisStoreBean() {
+		User user = new User("超人", "66666");
+		redisTemplate.opsForValue().set(user.getUsername(), user);
+		Assert.assertEquals("66666", redisTemplate.opsForValue().get("超人").getPassword());
 	}
 
 }
