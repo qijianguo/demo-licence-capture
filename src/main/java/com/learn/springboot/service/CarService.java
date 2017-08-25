@@ -7,5 +7,5 @@ import com.learn.springboot.domain.Result;
  */
 public interface CarService {
 
-    Result getPicturesByTimeAndLicence(String licence, Long receiveTime);
+    Result getPicturesByTimeAndLicence(String licence, String receiveTime);
 }

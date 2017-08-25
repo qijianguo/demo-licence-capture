@@ -1,5 +1,6 @@
 package com.learn.springboot.mapper;
 
+import com.learn.springboot.domain.Picture;
 import com.learn.springboot.domain.vo.PictureVo;
 
 import java.util.List;
@@ -9,5 +10,7 @@ import java.util.List;
  */
 public interface PictureMapper {
 
-    List<PictureVo> getPicturesByTimeAndLicence(String licence);
+    // List<PictureVo> getPicturesByCarUuid(String licence);
+
+    Picture getLatestPicture();
 }

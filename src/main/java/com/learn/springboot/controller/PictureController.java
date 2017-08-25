@@ -17,10 +17,9 @@ public class PictureController {
     @Autowired
     private PictureService pictureService;
 
-    @GetMapping("/carUuid")
-    public Result getPicturesByTimeAndLicence(String carUuid) {
-        return pictureService.getPicturesByTimeAndLicence(carUuid);
+    @GetMapping("/")
+    public Result getLatestPicture() {
+        return pictureService.getLatestPicture();
     }
-
 
 }

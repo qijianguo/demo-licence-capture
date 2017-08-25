@@ -3,12 +3,15 @@ package com.learn.springboot.controller;
 import com.learn.springboot.domain.Result;
 import com.learn.springboot.domain.User;
 import com.learn.springboot.service.UserService;
+import com.learn.springboot.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
@@ -29,6 +32,18 @@ public class UserController {
     @PostMapping(value = "/login")
     public Result doLogin(String username, String password) {
         return userService.findUserByUsernameAndPassword(username,password);
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    @GetMapping(value = "/exit")
+    public Result<Object> logout(HttpServletRequest request){
+        HttpSession session =request.getSession();
+        session.invalidate();
+        return ResultUtil.success("退出成功!");
     }
 
 

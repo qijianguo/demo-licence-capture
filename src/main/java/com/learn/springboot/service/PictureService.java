@@ -1,5 +1,6 @@
 package com.learn.springboot.service;
 
+import com.learn.springboot.domain.Picture;
 import com.learn.springboot.domain.Result;
 import com.learn.springboot.domain.vo.PictureVo;
 
@@ -10,6 +11,6 @@ import java.util.List;
  */
 public interface PictureService{
 
-    Result getPicturesByTimeAndLicence(String carUuid);
+    Result<Picture> getLatestPicture();
 
 }

@@ -18,7 +18,7 @@ public class CarController {
     private CarService carService;
 
     @GetMapping("/")
-    public Result getPicturesByTimeAndLicence(String licence, Long receiveTime) {
+    public Result getPicturesByTimeAndLicence(String licence, String receiveTime) {
         return carService.getPicturesByTimeAndLicence(licence, receiveTime);
     }
 }

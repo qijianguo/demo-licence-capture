@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface CarMapper {
 
-    List<PictureVo> getPicturesByTimeAndLicence(String licence, Long receiveTime);
+    List<PictureVo> getPicturesByTimeAndLicence(String licence, Long receiveTime) throws Exception;
 }
