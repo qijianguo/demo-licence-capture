@@ -72,6 +72,9 @@ public class SpringbootApplicationTests {
 	private StringRedisTemplate stringRedisTemplate;
 
 	@Test
+	/**
+	 * 测试redis连接是否正常, 简单数据的存取
+	 */
 	public void testRedis() {
 		stringRedisTemplate.opsForValue().append("name","Angus");
 		Assert.assertEquals("Angus", stringRedisTemplate.opsForValue().get("name"));
