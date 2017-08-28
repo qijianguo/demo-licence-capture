@@ -11,5 +11,6 @@
         <typeAlias alias="Picture" type="com.learn.springboot.domain.Picture" />
         <typeAlias alias="Car" type="com.learn.springboot.domain.Car" />
         <typeAlias alias="PictureVo" type="com.learn.springboot.domain.vo.PictureVo" />
+        <typeAlias alias="Page" type="com.learn.springboot.domain.Page" />
     </typeAliases>
 </configuration>

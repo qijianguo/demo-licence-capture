@@ -17,8 +17,16 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+    /**
+     *
+     *
+     * @param licence 车牌号
+     * @param receiveTime 抓拍时间
+     * @param pageNum 当前页数
+     * @return
+     */
     @GetMapping("/")
-    public Result getPicturesByTimeAndLicence(String licence, String receiveTime) {
-        return carService.getPicturesByTimeAndLicence(licence, receiveTime);
+    public Result getPicturesByTimeAndLicenceByPage(String licence, String receiveTime, int pageNum) {
+        return carService.getPicturesByTimeAndLicenceByPage(licence, receiveTime, pageNum);
     }
 }

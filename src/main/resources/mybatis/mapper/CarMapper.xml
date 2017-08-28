@@ -10,11 +10,35 @@
         <result property="licence" column="licence"/>
         <result property="carUuid" column="car_uuid"/>
     </resultMap>
-    <select id="getPicturesByTimeAndLicence" resultMap="BeseMap">
+    <select id="getPicturesByTimeAndLicenceByPage" parameterType="Page" resultMap="BeseMap">
         select p.url, p.receive_time, c.licence, c.car_uuid from picture p, car c
-        <where>
-            c.car_uuid = p.car_uuid and c.licence = #{0} and p.receive_time > #{1} limit 10
-        </where>
+        WHERE c.car_uuid = p.car_uuid
+
+        <if test="#{params.licence} != null and !&quot;&quot;.equals(#{params.licence})">
+            and c.licence LIKE CONCAT('%','${params.licence}','%')
+        </if>
+
+        <if test="#{params.receiveTime} != null and !&quot;&quot;.equals(#{params.receiveTime})">
+            and p.receive_time > #{params.receiveTime}
+        </if>
+
+        <if test="#{params.skip} != null and  !&quot;&quot;.equals(#{params.skip})
+               and #{pageSize} != null and  !&quot;&quot;.equals(#{params.pageSize}) ">
+            ORDER by p.receive_time DESC limit #{params.skip}, #{params.pageSize}
+        </if>
+    </select>
+
+    <select id="getPictureCount" parameterType="Page" resultType="int">
+        select COUNT(*) from picture p, car c WHERE c.car_uuid = p.car_uuid
+
+        <if test="#{params.licence} != null and !&quot;&quot;.equals(#{params.licence})">
+            and c.licence LIKE CONCAT('%','${params.licence}','%')
+        </if>
+
+        <if test="#{params.receiveTime} != null and !&quot;&quot;.equals(#{params.receiveTime})">
+            and p.receive_time > #{params.receiveTime}
+        </if>
+
     </select>
 
 </mapper>
