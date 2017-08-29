@@ -1,6 +1,7 @@
 package com.learn.springboot.controller;
 
 import com.learn.springboot.domain.Result;
+import com.learn.springboot.domain.vo.CarQuery;
 import com.learn.springboot.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class CarController {
     private CarService carService;
 
     /**
-     *
+     * 分页并按照条件查询
      *
      * @param licence 车牌号
      * @param receiveTime 抓拍时间
@@ -26,7 +27,7 @@ public class CarController {
      * @return
      */
     @GetMapping("/")
-    public Result getPicturesByTimeAndLicenceByPage(String licence, String receiveTime, int pageNum) {
-        return carService.getPicturesByTimeAndLicenceByPage(licence, receiveTime, pageNum);
+    public Result getPicturesByTimeAndLicenceAndPage(CarQuery carQuery) {
+        return carService.getPicturesByTimeAndLicenceByPage(carQuery);
     }
 }

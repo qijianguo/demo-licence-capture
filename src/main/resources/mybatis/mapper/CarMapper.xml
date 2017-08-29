@@ -18,7 +18,7 @@
             and c.licence LIKE CONCAT('%','${params.licence}','%')
         </if>
 
-        <if test="#{params.receiveTime} != null and !&quot;&quot;.equals(#{params.receiveTime})">
+        <if test="#{params.receiveTime} != null and !&quot;&quot;.equals(#{params.receiveTime} and !&quot;0&quot;.equals(#{params.receiveTime}))">
             and p.receive_time > #{params.receiveTime}
         </if>
 

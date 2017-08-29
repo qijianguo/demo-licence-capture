@@ -1,27 +1,29 @@
 package com.learn.springboot.controller;
 
 import com.learn.springboot.domain.Result;
-import com.learn.springboot.service.PictureService;
+import com.learn.springboot.service.CsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by qijianguo on 2017/8/24.
+ * Description:
+ * <p>
+ * User: Administrator
+ * Date: 2017-08-29
+ * Time: 14:18
  */
 @RestController
-@RequestMapping("/picture")
-public class PictureController {
+@RequestMapping(value = "/csite")
+public class CsiteController {
 
     @Autowired
-    private PictureService pictureService;
+    private CsiteService csiteService;
 
-    @GetMapping("/")
-    public Result getLatestPicture() {
-        return pictureService.getLatestPicture();
+    @GetMapping(value = "")
+    public Result getCsiteOne() {
+        return csiteService.selectCsiteOne();
     }
-
-    
 
 }
