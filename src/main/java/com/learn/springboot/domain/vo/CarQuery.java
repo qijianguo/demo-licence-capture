@@ -10,8 +10,10 @@ package com.learn.springboot.domain.vo;
 public class CarQuery {
 
     private String licence;
-    private String receiveTime;
+    private String startTime;
+    private String endTime;
     private int pageNum;
+    private int pageSize;
 
     public String getLicence() {
         return licence;
@@ -21,12 +23,20 @@ public class CarQuery {
         this.licence = licence;
     }
 
-    public String getReceiveTime() {
-        return receiveTime;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setReceiveTime(String receiveTime) {
-        this.receiveTime = receiveTime;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public int getPageNum() {
@@ -35,5 +45,13 @@ public class CarQuery {
 
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 }

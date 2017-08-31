@@ -155,7 +155,7 @@ public class DateFormatUtil {
      * @return
      */
     public static Long string2Long(String timeStr) {
-        Date date = string2date(timeStr, YYYY_MM_DD_HH_MM_SS );
+        Date date = string2date(timeStr, YYYY_MM_DD_HH_MM );
         return date.getTime();
     }
 

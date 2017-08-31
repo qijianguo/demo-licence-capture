@@ -41,4 +41,14 @@ public class PictureVo {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "PictureVo{" +
+                "carUuid='" + carUuid + '\'' +
+                ", licence='" + licence + '\'' +
+                ", receiveTime=" + receiveTime +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

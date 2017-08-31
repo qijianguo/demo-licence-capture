@@ -35,12 +35,15 @@ public class CarServiceImpl implements CarService {
         try {
             list = carMapper.getPicturesByTimeAndLicenceByPage(page);
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error("getPicturesByTimeAndLicence查询失败: {}" , e);
             new Result(Result.ERROR, "查询失败!",null);
         }
         page.setResults(list);
-        return list!= null && list.size() > 0 ? new Result(Result.OK, "查询成功",page) : new Result(Result.NO_RESULT, "无牌照为: +"+ carQuery.getLicence() +"   时间为:"+ carQuery.getReceiveTime() + " 的抓拍信息",page);
+        return list!= null && list.size() > 0
+                ? new Result(Result.OK, "查询成功",page)
+                : new Result(Result.NO_RESULT,
+                "无牌照为: +"+ carQuery.getLicence()
+                        +" 时间为:"+ carQuery.getStartTime() + "---" +carQuery.getEndTime()+ "的抓拍信息",page);
     }
 
     /**
@@ -51,18 +54,25 @@ public class CarServiceImpl implements CarService {
      */
     private Page encapsulationPage(CarQuery carQuery) {
         Page<PictureVo> page = new Page<>();
-        Long time = 0L;
-        if (carQuery != null && !StringUtils.isEmpty(carQuery.getReceiveTime())) {
-            time = DateFormatUtil.string2Long(carQuery.getReceiveTime());
-        }
+        Long start = 0L, end = 0L;
         Map<String, Object> map = new HashMap<>();
+        if (carQuery != null && !StringUtils.isEmpty(carQuery.getStartTime())
+                && !StringUtils.isEmpty(carQuery.getEndTime())) {
+            start = DateFormatUtil.string2Long(carQuery.getStartTime());
+            end = DateFormatUtil.string2Long(carQuery.getEndTime());
+            map.put("start", start);
+            map.put("end", end);
+        }
+        map.put("start", start);
+        map.put("end", end);
         map.put("licence", carQuery.getLicence());
-        map.put("receiveTime", time);
-        map.put("skip", (carQuery.getPageNum() - 1) * page.getPageSize());
-        map.put("pageSize", page.getPageSize());
+        map.put("skip", (carQuery.getPageNum() - 1) * carQuery.getPageSize());
+        map.put("pageSize", carQuery.getPageSize());
         page.setParams(map);
         int count = carMapper.getPictureCount(page);
-        page.setTotalPage(count);
+        page.setTotalRecord(count);
+        int pageSize = carQuery.getPageSize();
+        page.setPageSize(pageSize);
         return page;
     }
 }

@@ -17,7 +17,7 @@ public class Result<T> {
     public static final int ERROR = 100;
 
     /** 无查询结果，但请求参数正确 */
-    public static final int NO_RESULT = 204;
+    public static final int NO_RESULT = 200;
 
     /** 响应码 */
     private int code;

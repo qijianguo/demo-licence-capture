@@ -21,12 +21,10 @@ public class CarController {
     /**
      * 分页并按照条件查询
      *
-     * @param licence 车牌号
-     * @param receiveTime 抓拍时间
-     * @param pageNum 当前页数
+     * @param carQuery 查询对象分装
      * @return
      */
-    @GetMapping("/")
+    @GetMapping("")
     public Result getPicturesByTimeAndLicenceAndPage(CarQuery carQuery) {
         return carService.getPicturesByTimeAndLicenceByPage(carQuery);
     }

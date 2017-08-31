@@ -13,29 +13,23 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Page<T> {
 
-    private static final int DEFAULT_PAGE_SIZE = 10;
-
     /** 当前页, 默认第一页 */
-    private int pageNum = 1;
+    private int pageNum;
 
     /** 每页记录数 */
-    private int pageSize = DEFAULT_PAGE_SIZE;
+    private int pageSize;
 
     /** 总记录数 */
-    private int totalRecord = -1;
+    private int totalRecord;
 
     /** 总页数 */
-    private int totalPage = -1;
+    private int totalPage;
 
     /** 包装数据的list */
     private List<T> results;
 
     /** 分装参数 */
     private Map<String, Object> params = new ConcurrentHashMap<>();
-
-    public static int getDefaultPageSize() {
-        return DEFAULT_PAGE_SIZE;
-    }
 
     public int getPageNum() {
         return pageNum;
@@ -50,7 +44,7 @@ public class Page<T> {
     }
 
     public void setPageSize(int pageSize) {
-        computeTotalPage();
+        this.pageSize = pageSize;
     }
 
     public int getTotalRecord() {
@@ -59,7 +53,6 @@ public class Page<T> {
 
     public void setTotalRecord(int totalRecord) {
         this.totalRecord = totalRecord;
-
     }
 
     public int getTotalPage() {
@@ -67,7 +60,7 @@ public class Page<T> {
     }
 
     public void setTotalPage(int totalPage) {
-        computeTotalPage();
+        this.totalPage = totalPage;
     }
 
     public List<T> getResults() {
@@ -95,5 +88,17 @@ public class Page<T> {
                     ? getTotalRecord() / getPageSize()
                     : getTotalRecord() / getPageSize() + 1);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", totalRecord=" + totalRecord +
+                ", totalPage=" + totalPage +
+                ", results=" + results +
+                ", params=" + params +
+                '}';
     }
 }
